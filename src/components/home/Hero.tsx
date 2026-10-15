@@ -2,139 +2,212 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import {
-  Search,
-  MapPin,
-  IndianRupee,
-  Layers,
-  ArrowRight,
-  ShieldCheck,
-  Compass,
-  Sparkles,
-  MessageSquare
-} from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { Search, MapPin, Check } from 'lucide-react';
 
 export default function Hero() {
   const router = useRouter();
-  const [searchLocation, setSearchLocation] = useState('all');
-  const [searchBudget, setSearchBudget] = useState('all');
+  const [activeType, setActiveType] = useState<'buy' | 'gated' | 'investment'>('buy');
+  const [corridor, setCorridor] = useState('all');
+  const [query, setQuery] = useState('');
 
-  const handleQuickSearch = (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const params = new URLSearchParams();
-    if (searchLocation !== 'all') params.set('location', searchLocation);
-    if (searchBudget !== 'all') params.set('budgetRange', searchBudget);
+    if (corridor !== 'all') params.set('location', corridor);
+    if (query.trim()) params.set('q', query.trim());
     router.push(params.toString() ? `/plots?${params.toString()}` : '/plots');
   };
 
+  const handleQuickTag = (tag: string) => {
+    setCorridor(tag);
+    router.push(`/plots?location=${encodeURIComponent(tag)}`);
+  };
+
   return (
-    <section className="pt-4 pb-12 sm:pt-6 sm:pb-16 bg-[#F4F5F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Floating Immersive Landscape Card with Curved Edges (matching the reference image) */}
-        <div className="relative rounded-3xl sm:rounded-[36px] overflow-hidden min-h-[500px] sm:min-h-[560px] lg:min-h-[620px] border border-[#DADDD5] editorial-shadow-lg flex flex-col justify-between p-6 sm:p-10 lg:p-12">
-          {/* Background Realistic Tamil Nadu Land & Hills Photography */}
-          <Image
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2200&q=85"
-            alt="Harbour Enclave and Residential Plots in Thoothukudi, Tamil Nadu"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-          {/* Subtle Contrast Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/75"></div>
+    <section
+      suppressHydrationWarning
+      className="relative w-full overflow-hidden min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] flex flex-col justify-between"
+    >
+      {/* 100% Full-Bleed Aerial Photography */}
+      <Image
+        src="/images/hero-aerial-golden.jpg"
+        alt="Vast aerial residential land parcel in Thoothukudi, Tamil Nadu"
+        fill
+        priority
+        className="object-cover object-center"
+      />
 
-          {/* Top Pill Header Bar Inside Card */}
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-semibold">
-              <span className="w-2 h-2 rounded-full bg-[#668F35] animate-ping"></span>
-              <span className="tracking-widest uppercase text-[11px]">
-                HARBOUR ENCLAVE &amp; RESIDENTIAL PLOTS
-              </span>
-            </div>
+      {/* Atmospheric Contrast Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/80 pointer-events-none"></div>
 
-            {/* Quick Location Badge */}
-            <div className="hidden sm:inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-xs">
-              <MapPin className="w-3.5 h-3.5 text-[#668F35]" />
-              <span>Thoothukudi (Tuticorin), Tamil Nadu</span>
-            </div>
+      {/* Traced Glowing Demarcation Polygon Overlay (Demarcating plots across the landscape) */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 1000 600"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <filter id="hero-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+        {/* Masterplot 1 Wireframe on the sunny rolling hills */}
+        <polygon
+          points="520,330 800,280 920,440 630,490"
+          fill="rgba(183, 228, 54, 0.14)"
+          stroke="#D8FF54"
+          strokeWidth="2.5"
+          strokeDasharray="8 4"
+          filter="url(#hero-glow)"
+          className="animate-pulse"
+        />
+        {/* Plot subdivision lines */}
+        <line x1="660" y1="305" x2="720" y2="475" stroke="#D8FF54" strokeWidth="1.5" strokeOpacity="0.8" />
+        <line x1="550" y1="410" x2="860" y2="355" stroke="#D8FF54" strokeWidth="1.5" strokeOpacity="0.8" />
+      </svg>
+
+      {/* Content Container aligned within Max Width */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 sm:pb-20 lg:pb-24 flex flex-col justify-between flex-1">
+        {/* Top Brand Pill Strip */}
+        <div className="flex items-center justify-between">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-semibold shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#B7E436] animate-pulse"></span>
+            <span className="tracking-widest uppercase text-[11px]">
+              THOOTHUKUDI RESIDENTIAL LAND PORTAL
+            </span>
           </div>
 
-          {/* Center Immersive Display Typography (matching massive "WANDER" in screenshot) */}
-          <div className="relative z-10 text-center my-auto py-8">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tight uppercase drop-shadow-md">
-              PLOT 4 TUTY<span className="text-[#668F35]">.</span>
-            </h1>
-            <p className="text-sm sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mt-4 leading-relaxed font-light drop-shadow-sm">
-              Discover verified residential land plots across Thoothukudi with curated layout maps, sweet groundwater insights, and hassle-free registration in one platform.
-            </p>
-
-            {/* Dual Action Pill Buttons (matching reference style) */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              <Link
-                href="/plots"
-                className="px-6 sm:px-8 py-3 rounded-full bg-white text-[#222222] hover:bg-[#668F35] hover:text-white font-bold text-xs sm:text-sm transition-all shadow-md"
-              >
-                Explore All Plots
-              </Link>
-              <a
-                href="https://wa.me/919842155678?text=Hello%20Plot%204%20Tuty,%20I%20would%20like%20to%20plan%20a%20site%20visit%20for%20Harbour%20Enclave%20and%20other%20plots."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 sm:px-8 py-3 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/40 font-bold text-xs sm:text-sm transition-all"
-              >
-                Plan Site Inspection
-              </a>
-            </div>
+          <div className="hidden sm:inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-white/90 text-xs font-mono border border-white/10">
+            <span>8°45&apos;N 78°08&apos;E • TAMIL NADU</span>
           </div>
+        </div>
 
-          {/* Bottom Integrated Search Strip (matching top search pill in reference) */}
-          <div className="relative z-10 max-w-3xl mx-auto w-full">
-            <form
-              onSubmit={handleQuickSearch}
-              className="bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-white/50 shadow-2xl flex flex-col sm:flex-row items-center gap-2"
+        {/* Central Editorial Search Box matching Reference Screenshot */}
+        <div className="max-w-3xl my-auto py-10 sm:py-14">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] drop-shadow-lg">
+            Let&apos;s find the land of <br />
+            your dreams in Thoothukudi<span className="text-[#B7E436]">.</span>
+          </h1>
+
+          {/* Filter Pills Switcher */}
+          <div className="mt-7 flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setActiveType('buy')}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer ${
+                activeType === 'buy'
+                  ? 'bg-white text-[#1C2618] shadow-md scale-105'
+                  : 'bg-black/40 hover:bg-black/60 text-white border border-white/25 backdrop-blur-sm'
+              }`}
             >
-              <div className="flex-1 flex items-center space-x-2 px-3 py-1.5 w-full border-b sm:border-b-0 sm:border-r border-gray-200">
-                <MapPin className="w-4 h-4 text-[#668F35] shrink-0" />
-                <select
-                  value={searchLocation}
-                  onChange={(e) => setSearchLocation(e.target.value)}
-                  className="w-full bg-transparent text-xs sm:text-sm font-semibold text-[#222222] focus:outline-none cursor-pointer"
-                >
-                  <option value="all">Search Corridor: Harbour Bypass, Korampallam...</option>
-                  <option value="Harbour Bypass Road">Harbour Bypass (Harbour Enclave)</option>
-                  <option value="Korampallam">Korampallam (Near Collectorate)</option>
-                  <option value="Palayamkottai Road">Palayamkottai Road (NH 138)</option>
-                  <option value="Millerpuram">Millerpuram (City Center)</option>
-                  <option value="Muthiapuram">Muthiapuram &amp; Spic Nagar</option>
-                  <option value="Ettayapuram Road">Ettayapuram Road</option>
-                </select>
-              </div>
+              {activeType === 'buy' && <Check className="w-3.5 h-3.5 text-[#668F35] stroke-[3]" />}
+              <span>Buy Residential Plot</span>
+            </button>
 
-              <div className="flex-1 flex items-center space-x-2 px-3 py-1.5 w-full border-b sm:border-b-0 sm:border-r border-gray-200">
-                <IndianRupee className="w-4 h-4 text-[#668F35] shrink-0" />
-                <select
-                  value={searchBudget}
-                  onChange={(e) => setSearchBudget(e.target.value)}
-                  className="w-full bg-transparent text-xs sm:text-sm font-semibold text-[#222222] focus:outline-none cursor-pointer"
-                >
-                  <option value="all">Select Price Range: Any Budget</option>
-                  <option value="under-15">Under ₹15 Lakhs</option>
-                  <option value="15-25">₹15 Lakhs – ₹25 Lakhs</option>
-                  <option value="25-35">₹25 Lakhs – ₹35 Lakhs</option>
-                  <option value="above-35">Above ₹35 Lakhs</option>
-                </select>
-              </div>
+            <button
+              type="button"
+              onClick={() => setActiveType('gated')}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer ${
+                activeType === 'gated'
+                  ? 'bg-white text-[#1C2618] shadow-md scale-105'
+                  : 'bg-black/40 hover:bg-black/60 text-white border border-white/25 backdrop-blur-sm'
+              }`}
+            >
+              {activeType === 'gated' && <Check className="w-3.5 h-3.5 text-[#668F35] stroke-[3]" />}
+              <span>Gated Townships</span>
+            </button>
 
-              <button
-                type="submit"
-                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#668F35] hover:bg-[#53752A] text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center space-x-1.5 shrink-0"
+            <button
+              type="button"
+              onClick={() => setActiveType('investment')}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer ${
+                activeType === 'investment'
+                  ? 'bg-white text-[#1C2618] shadow-md scale-105'
+                  : 'bg-black/40 hover:bg-black/60 text-white border border-white/25 backdrop-blur-sm'
+              }`}
+            >
+              {activeType === 'investment' && <Check className="w-3.5 h-3.5 text-[#668F35] stroke-[3]" />}
+              <span>Commercial Frontage</span>
+            </button>
+          </div>
+
+          {/* Unified Inline Search Bar */}
+          <form
+            onSubmit={handleSearch}
+            className="mt-4 bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-full p-2 border border-white/40 shadow-2xl flex flex-col sm:flex-row items-stretch sm:items-center gap-2"
+          >
+            {/* Corridor Dropdown */}
+            <div className="flex items-center space-x-2 px-4 py-2 border-b sm:border-b-0 sm:border-r border-gray-200">
+              <MapPin className="w-4 h-4 text-[#668F35] shrink-0" />
+              <select
+                value={corridor}
+                onChange={(e) => setCorridor(e.target.value)}
+                className="bg-transparent text-xs sm:text-sm font-bold text-[#222222] focus:outline-none cursor-pointer"
               >
-                <Search className="w-4 h-4" />
-                <span>Search</span>
-              </button>
-            </form>
+                <option value="all">Corridor: All Areas</option>
+                <option value="Korampallam">Korampallam (Collectorate)</option>
+                <option value="Harbour Bypass Road">Harbour Bypass (Harbour Enclave)</option>
+                <option value="Palayamkottai Road">Palayamkottai Road (NH 138)</option>
+                <option value="Millerpuram">Millerpuram (City Center)</option>
+                <option value="Muthiapuram">Muthiapuram &amp; Port Zone</option>
+                <option value="Ettayapuram Road">Ettayapuram Road</option>
+              </select>
+            </div>
+
+            {/* Text Input */}
+            <div className="flex-1 px-4 py-2">
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Type corridor, road width, or characteristics (ex: 40ft road, sweet water)..."
+                className="w-full bg-transparent text-xs sm:text-sm text-[#222222] placeholder-gray-500 focus:outline-none font-medium"
+              />
+            </div>
+
+            {/* Vibrant Lime Action Button */}
+            <button
+              type="submit"
+              className="px-8 py-3 rounded-xl sm:rounded-full bg-[#B7E436] hover:bg-[#A3CE2A] text-[#1C2618] text-xs sm:text-sm font-bold transition-all shadow-md flex items-center justify-center space-x-2 shrink-0 cursor-pointer hover:shadow-lg"
+            >
+              <Search className="w-4 h-4 stroke-[2.5]" />
+              <span>Search Plots</span>
+            </button>
+          </form>
+
+          {/* Quick Tags Row */}
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-white/90">
+            <span className="text-[11px] text-gray-300 font-medium">Most searched:</span>
+            <button
+              type="button"
+              onClick={() => handleQuickTag('Korampallam')}
+              className="px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-[11px] text-white transition-colors cursor-pointer"
+            >
+              Korampallam Collectorate
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickTag('Harbour Bypass Road')}
+              className="px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-[11px] text-white transition-colors cursor-pointer"
+            >
+              Harbour Enclave Phase 1
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickTag('Palayamkottai Road')}
+              className="px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-[11px] text-white transition-colors cursor-pointer"
+            >
+              Palayamkottai Road (NH 138)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickTag('Millerpuram')}
+              className="px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-[11px] text-white transition-colors cursor-pointer"
+            >
+              Millerpuram Central
+            </button>
           </div>
         </div>
       </div>

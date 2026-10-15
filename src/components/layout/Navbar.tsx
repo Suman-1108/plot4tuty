@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Phone, MessageSquare, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Menu, X, Phone, MessageSquare, ShieldCheck, ArrowRight, Compass } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,8 +12,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Explore Plots', href: '/plots' },
-    { name: 'Projects', href: '/projects' },
+    { name: 'Residential Plots', href: '/plots' },
+    { name: 'Projects & Layouts', href: '/projects' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -26,12 +26,12 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-[#F4F5F0]/95 backdrop-blur-md border-b border-[#DADDD5]">
       {/* Top Utility Bar */}
-      <div className="hidden lg:block bg-[#222222] text-[#F4F5F0] text-xs py-1.5 px-6">
+      <div className="hidden lg:block bg-[#1F271B] text-[#F4F5F0] text-xs py-1.5 px-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-6">
             <span className="flex items-center space-x-1.5 text-gray-300">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#668F35]"></span>
-              <span>100% DTCP Approved & RERA Verified Plots in Thoothukudi</span>
+              <span className="inline-block w-2 h-2 rounded-full bg-[#B7E436]"></span>
+              <span>100% DTCP Approved &amp; TNRERA Verified Plots in Thoothukudi, Tamil Nadu</span>
             </span>
             <span className="text-gray-400">|</span>
             <span className="text-gray-300">Office: Palayamkottai Road, Thoothukudi</span>
@@ -41,7 +41,7 @@ export default function Navbar() {
               href="tel:+919842155678"
               className="flex items-center space-x-1.5 text-gray-300 hover:text-white transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-[#668F35]" />
+              <Phone className="w-3.5 h-3.5 text-[#B7E436]" />
               <span>+91 98421 55678</span>
             </a>
             <Link
@@ -55,12 +55,12 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Navigation */}
+      {/* Main Navigation (Clean Pill Style matching Reference) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Round Logo */}
+          {/* Round Logo + Brand Title */}
           <Link href="/" className="flex items-center space-x-3 group py-1">
-            <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-full overflow-hidden bg-white border-2 border-[#DADDD5] group-hover:border-[#668F35] shadow-xs transition-all duration-200 group-hover:scale-105 shrink-0">
+            <div className="relative h-12 w-12 sm:h-13 sm:w-13 rounded-full overflow-hidden bg-white border-2 border-[#DADDD5] group-hover:border-[#668F35] shadow-xs transition-all duration-200 group-hover:scale-105 shrink-0">
               <Image
                 src="/logo-round.png"
                 alt="PLOT 4 TUTY"
@@ -71,7 +71,7 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-base sm:text-lg font-black tracking-tight text-[#222222] leading-none group-hover:text-[#668F35] transition-colors">
-                PLOT 4 TUTY<span className="text-[#668F35]"></span>
+                PLOT 4 TUTY<span className="text-[#668F35]">.</span>
               </span>
               <span className="text-[9px] sm:text-[10px] font-bold text-[#666A5D] tracking-wider uppercase mt-1">
                 FIND YOUR LAND. BUILD YOUR FUTURE.
@@ -79,41 +79,44 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          {/* Desktop Navigation Links with subtle active underline */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-3">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`px-3.5 py-2 text-sm font-medium transition-colors rounded-md ${
+                  className={`px-3.5 py-2 text-xs lg:text-sm font-semibold transition-all relative ${
                     active
-                      ? 'text-[#222222] font-semibold border-b-2 border-[#668F35] rounded-none'
-                      : 'text-[#55594D] hover:text-[#222222] hover:bg-[#EAECE4]'
+                      ? 'text-[#222222] font-bold'
+                      : 'text-[#55594D] hover:text-[#222222] hover:bg-[#EAECE4] rounded-full'
                   }`}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {active && (
+                    <span className="absolute bottom-0 left-3.5 right-3.5 h-[2.5px] bg-[#668F35] rounded-full"></span>
+                  )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* CTA Buttons */}
+          {/* Right Action Button (Clean Pill with Arrow matching reference) */}
           <div className="hidden sm:flex items-center space-x-3">
             <a
-              href="https://wa.me/919842155678?text=Hello%20Plot%204%20Tuty,%20I%20am%20interested%20in%20residential%20plots%20in%20Thoothukudi."
+              href="https://wa.me/919842155678?text=Hello%20Plot%204%20Tuty,%20I%20am%20interested%20in%20residential%20plots."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-3.5 py-2 text-xs font-medium text-[#222222] bg-[#FFFFFF] border border-[#DADDD5] hover:border-[#668F35] hover:bg-white rounded-md transition-all editorial-shadow"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-[#222222] bg-white border border-[#DADDD5] hover:border-[#668F35] rounded-full transition-all shadow-xs"
             >
               <MessageSquare className="w-3.5 h-3.5 text-[#668F35]" />
-              <span>WhatsApp Chat</span>
+              <span>WhatsApp</span>
             </a>
 
             <Link
               href="/plots"
-              className="inline-flex items-center space-x-2 px-4 py-2 text-xs font-semibold text-white bg-[#668F35] hover:bg-[#53752A] rounded-md transition-all shadow-sm"
+              className="inline-flex items-center space-x-2 px-5 py-2 text-xs font-bold text-[#1C2618] bg-[#B7E436] hover:bg-[#A3CE2A] rounded-full transition-all shadow-xs"
             >
               <span>Explore Plots</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -126,17 +129,17 @@ export default function Navbar() {
               href="https://wa.me/919842155678"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-[#668F35] bg-white border border-[#DADDD5] rounded-md"
+              className="p-2 text-[#668F35] bg-white border border-[#DADDD5] rounded-full"
               aria-label="WhatsApp"
             >
               <MessageSquare className="w-4 h-4" />
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-[#222222] hover:bg-[#EAECE4] border border-[#DADDD5]"
+              className="p-2 rounded-full text-[#222222] hover:bg-[#EAECE4] border border-[#DADDD5]"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -151,10 +154,10 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2.5 rounded-md text-base font-medium ${
+                className={`block px-3 py-2.5 rounded-lg text-sm font-semibold ${
                   isActive(link.href)
-                    ? 'bg-[#FFFFFF] text-[#222222] border-l-4 border-[#668F35] font-semibold'
-                    : 'text-[#55594D] hover:bg-[#EAECE4] hover:text-[#222222]'
+                    ? 'bg-white text-[#222222] border-l-4 border-[#668F35]'
+                    : 'text-[#55594D] hover:bg-[#EAECE4]'
                 }`}
               >
                 {link.name}
@@ -163,20 +166,13 @@ export default function Navbar() {
           </div>
 
           <div className="pt-4 border-t border-[#DADDD5] space-y-2">
-            <a
-              href="tel:+919842155678"
-              className="flex items-center justify-center space-x-2 w-full py-2.5 px-4 bg-white border border-[#DADDD5] rounded-md text-sm font-medium text-[#222222]"
-            >
-              <Phone className="w-4 h-4 text-[#668F35]" />
-              <span>Call: +91 98421 55678</span>
-            </a>
             <Link
-              href="/admin"
+              href="/plots"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center space-x-2 w-full py-2 px-4 text-xs text-[#666A5D] hover:text-[#222222]"
+              className="flex items-center justify-center space-x-2 w-full py-2.5 px-4 bg-[#B7E436] text-[#1C2618] rounded-full text-xs font-bold"
             >
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Admin Management</span>
+              <span>Explore All Plots</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>

@@ -1,16 +1,19 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, MessageSquare, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#FFFFFF] border-t border-[#DADDD5] text-[#222222] pt-16 pb-12">
+    <footer className="bg-[#1C2618] text-[#DCE6CE] pt-16 pb-10 border-t border-[#2C3826]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-[#DADDD5]">
-          {/* Brand Info */}
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-[#2C3826]">
+          {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative h-14 w-14 rounded-full overflow-hidden bg-white border-2 border-[#DADDD5] group-hover:border-[#668F35] shadow-xs shrink-0 transition-all">
+              <div className="relative h-12 w-12 rounded-full overflow-hidden bg-white border border-[#3C4E34] group-hover:border-[#B7E436] shadow-sm shrink-0 transition-all">
                 <Image
                   src="/logo-round.png"
                   alt="PLOT 4 TUTY"
@@ -19,160 +22,210 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-black tracking-tight text-[#222222] leading-none group-hover:text-[#668F35] transition-colors">
-                  PLOT 4 TUTY<span className="text-[#668F35]">.</span>
+                <span className="text-xl font-black tracking-tight text-white leading-none">
+                  PLOT 4 TUTY<span className="text-[#B7E436]">.</span>
                 </span>
-                <span className="text-[10px] font-bold text-[#668F35] tracking-widest uppercase mt-1">
+                <span className="text-[10px] font-bold text-[#8FA57C] tracking-widest uppercase mt-1">
                   FIND YOUR LAND. BUILD YOUR FUTURE.
                 </span>
               </div>
             </Link>
-            <p className="text-sm text-[#666A5D] leading-relaxed max-w-sm">
-              Thoothukudi&apos;s premier land discovery platform for DTCP-approved and RERA-registered residential plots. We ensure 100% legal title clearance, transparent registration support, and prime plotted communities.
+
+            <p className="text-xs sm:text-sm text-[#A9BA99] leading-relaxed max-w-sm">
+              Trazemos inteligência em análise fundiária, territorial e documentação com tecnologia de ponta. Delivering verified DTCP land layouts and high-growth investments across Thoothukudi, Tamil Nadu.
             </p>
 
-            <div className="pt-2 flex items-center space-x-3">
+            {/* Social Icons matching reference */}
+            <div className="flex items-center space-x-3 pt-2">
               <a
-                href="https://wa.me/919842155678"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 text-xs font-medium px-3 py-1.5 bg-[#EDF3E4] text-[#53752A] rounded border border-[#668F35]/30 hover:bg-[#668F35] hover:text-white transition-colors"
+                href="#"
+                aria-label="Facebook"
+                className="w-8 h-8 rounded-full bg-[#273521] hover:bg-[#B7E436] hover:text-[#1C2618] text-[#CAD5BE] flex items-center justify-center text-xs font-bold transition-colors"
               >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>Quick WhatsApp Help</span>
+                f
               </a>
-              <span className="text-xs text-[#666A5D] flex items-center space-x-1">
-                <ShieldCheck className="w-4 h-4 text-[#668F35]" />
-                <span>Verified Documentation</span>
-              </span>
+              <a
+                href="#"
+                aria-label="Instagram"
+                className="w-8 h-8 rounded-full bg-[#273521] hover:bg-[#B7E436] hover:text-[#1C2618] text-[#CAD5BE] flex items-center justify-center text-xs font-bold transition-colors"
+              >
+                ig
+              </a>
+              <a
+                href="#"
+                aria-label="Twitter / X"
+                className="w-8 h-8 rounded-full bg-[#273521] hover:bg-[#B7E436] hover:text-[#1C2618] text-[#CAD5BE] flex items-center justify-center text-xs font-bold transition-colors"
+              >
+                x
+              </a>
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="w-8 h-8 rounded-full bg-[#273521] hover:bg-[#B7E436] hover:text-[#1C2618] text-[#CAD5BE] flex items-center justify-center text-xs font-bold transition-colors"
+              >
+                in
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Col 1: EMPRESA */}
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold text-[#222222] tracking-wider uppercase">
-              Explore
+            <h4 className="text-xs font-bold text-white tracking-widest uppercase">
+              EMPRESA
             </h4>
-            <ul className="space-y-2.5 text-sm text-[#666A5D]">
+            <ul className="space-y-2 text-xs text-[#A9BA99]">
               <li>
-                <Link href="/plots" className="hover:text-[#668F35] transition-colors flex items-center space-x-1">
-                  <span>All Plot Listings</span>
-                  <ArrowUpRight className="w-3 h-3 text-gray-400" />
+                <Link href="/about" className="hover:text-[#B7E436] transition-colors">
+                  Institucional
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="hover:text-[#668F35] transition-colors flex items-center space-x-1">
-                  <span>Layout Projects</span>
-                  <ArrowUpRight className="w-3 h-3 text-gray-400" />
+                <Link href="/contact" className="hover:text-[#B7E436] transition-colors">
+                  Contato &amp; Plantão
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#668F35] transition-colors">
-                  About Plot 4 Tuty
+                <Link href="/plots" className="hover:text-[#B7E436] transition-colors">
+                  Buscar Imóvel
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#668F35] transition-colors">
-                  Contact & Directions
-                </Link>
-              </li>
-              <li>
-                <Link href="/admin" className="hover:text-[#668F35] transition-colors text-xs text-gray-400">
-                  Admin Login
+                <Link href="/projects" className="hover:text-[#B7E436] transition-colors">
+                  Empreendimentos
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Prime Locations */}
+          {/* Col 2: PLANOS PARA */}
           <div className="space-y-3">
-            <h4 className="text-sm font-semibold text-[#222222] tracking-wider uppercase">
-              Key Locations
+            <h4 className="text-xs font-bold text-white tracking-widest uppercase">
+              SOLUÇÕES
             </h4>
-            <ul className="space-y-2.5 text-sm text-[#666A5D]">
+            <ul className="space-y-2 text-xs text-[#A9BA99]">
               <li>
-                <Link href="/plots?location=Korampallam" className="hover:text-[#668F35] transition-colors">
-                  Korampallam (Collectorate)
-                </Link>
-              </li>
-              <li>
-                <Link href="/plots?location=Millerpuram" className="hover:text-[#668F35] transition-colors">
-                  Millerpuram (City Center)
-                </Link>
-              </li>
-              <li>
-                <Link href="/plots?location=Palayamkottai+Road" className="hover:text-[#668F35] transition-colors">
-                  Palayamkottai Road (NH 138)
-                </Link>
-              </li>
-              <li>
-                <Link href="/plots?location=Harbour+Bypass+Road" className="hover:text-[#668F35] transition-colors">
-                  Harbour Bypass Road
-                </Link>
-              </li>
-              <li>
-                <Link href="/plots?location=Muthiapuram" className="hover:text-[#668F35] transition-colors">
-                  Muthiapuram & Spic Nagar
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Details */}
-          <div className="space-y-3">
-            <h4 className="text-sm font-semibold text-[#222222] tracking-wider uppercase">
-              Thoothukudi Office
-            </h4>
-            <div className="space-y-3 text-sm text-[#666A5D]">
-              <div className="flex items-start space-x-2.5">
-                <MapPin className="w-4 h-4 text-[#668F35] shrink-0 mt-0.5" />
-                <span>
-                  Plot 4 Tuty Property Enclave, Opposite District Collectorate, Palayamkottai Road, Thoothukudi, Tamil Nadu 628101
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Instituições Financeiras
                 </span>
-              </div>
-              <div className="flex items-center space-x-2.5">
-                <Phone className="w-4 h-4 text-[#668F35] shrink-0" />
-                <a href="tel:+919842155678" className="hover:text-[#222222]">
-                  +91 98421 55678
-                </a>
-              </div>
-              <div className="flex items-center space-x-2.5">
-                <Mail className="w-4 h-4 text-[#668F35] shrink-0" />
-                <a href="mailto:enquiry@plot4tuty.com" className="hover:text-[#222222]">
-                  enquiry@plot4tuty.com
-                </a>
-              </div>
-              <p className="text-xs text-gray-500 pt-1">
-                Mon - Sat: 9:00 AM – 7:30 PM <br />
-                Sunday: On-Site Plot Visits by Appointment
-              </p>
-            </div>
+              </li>
+              <li>
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Cartórios de Registro
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Aprovações DTCP &amp; TNRERA
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Poder Judiciário &amp; Pareceres
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Investidores &amp; NRIs
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: SERVIÇOS */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold text-white tracking-widest uppercase">
+              SERVIÇOS
+            </h4>
+            <ul className="space-y-2 text-xs text-[#A9BA99]">
+              <li>
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Due Diligence Fundiária
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Análise Topográfica
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Regularização de Terrenos
+                </span>
+              </li>
+              <li>
+                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
+                  Preservação de Áreas Verdes
+                </span>
+              </li>
+              <li>
+                <Link href="/admin" className="text-[11px] text-[#697B59] hover:text-[#B7E436] transition-colors">
+                  Acesso Restrito Admin
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Land Measurement Reference Note */}
-        <div className="py-6 border-b border-[#DADDD5] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs text-[#666A5D]">
-          <div className="bg-[#F4F5F0] p-2.5 rounded border border-[#DADDD5]">
-            <span className="font-semibold text-[#222222]">1 Cent:</span> 435.6 Sq. Ft. (40.47 Sq. Mtrs)
+        {/* Contact Banner matching reference: Entre Em Contato */}
+        <div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 border-b border-[#2C3826] text-xs">
+          <div>
+            <h5 className="text-sm font-bold text-white mb-1">
+              Entre Em Contato
+            </h5>
+            <p className="text-[#A9BA99] leading-snug">
+              Tem dúvidas ou precisa de assistência? Estamos aqui para ajudar!
+            </p>
           </div>
-          <div className="bg-[#F4F5F0] p-2.5 rounded border border-[#DADDD5]">
-            <span className="font-semibold text-[#222222]">1 Ground:</span> 2,400 Sq. Ft. (~5.51 Cents)
+
+          <div>
+            <h6 className="text-[11px] font-bold uppercase tracking-wider text-[#8FA57C] mb-1">
+              ENDEREÇO
+            </h6>
+            <p className="text-white leading-snug">
+              Palayamkottai Road, Near Collectorate, Thoothukudi, Tamil Nadu - 628008
+            </p>
           </div>
-          <div className="bg-[#F4F5F0] p-2.5 rounded border border-[#DADDD5]">
-            <span className="font-semibold text-[#222222]">1 Acre:</span> 100 Cents (43,560 Sq. Ft.)
+
+          <div>
+            <h6 className="text-[11px] font-bold uppercase tracking-wider text-[#8FA57C] mb-1">
+              TELEFONE
+            </h6>
+            <a
+              href="tel:+919842155678"
+              className="text-white hover:text-[#B7E436] transition-colors font-medium"
+            >
+              +91 98421 55678 / +91 461 2345678
+            </a>
           </div>
-          <div className="bg-[#F4F5F0] p-2.5 rounded border border-[#DADDD5]">
-            <span className="font-semibold text-[#222222]">Legal Verification:</span> DTCP & TNRERA Certified
+
+          <div>
+            <h6 className="text-[11px] font-bold uppercase tracking-wider text-[#8FA57C] mb-1">
+              EMAIL
+            </h6>
+            <a
+              href="mailto:contact@plot4tuty.com"
+              className="text-white hover:text-[#B7E436] transition-colors font-medium"
+            >
+              contact@plot4tuty.com
+            </a>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-[#666A5D] space-y-3 sm:space-y-0">
-          <p>© 2026 PLOT 4 TUTY. All rights reserved. Tamil Nadu Real Estate Discovery Platform.</p>
-          <div className="flex space-x-6">
-            <Link href="/about" className="hover:text-[#222222]">Legal Disclaimers</Link>
-            <Link href="/about" className="hover:text-[#222222]">Privacy Policy</Link>
-            <Link href="/contact" className="hover:text-[#222222]">Site Map</Link>
+        {/* Bottom Line */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#7E906E] gap-3">
+          <p>
+            © Plot 4 Tuty 2026. Todos os direitos reservados.
+          </p>
+          <div className="flex items-center space-x-6">
+            <Link href="/about" className="hover:text-white transition-colors">
+              Help
+            </Link>
+            <Link href="/about" className="hover:text-white transition-colors">
+              Termos de serviço
+            </Link>
+            <Link href="/about" className="hover:text-white transition-colors">
+              Política de privacidade
+            </Link>
           </div>
         </div>
       </div>

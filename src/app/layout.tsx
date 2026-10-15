@@ -48,7 +48,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
-      <body className="min-h-full flex flex-col bg-[#F4F5F0] text-[#222222] antialiased">
+      <body className="min-h-full flex flex-col bg-[#F4F5F0] text-[#222222] antialiased" suppressHydrationWarning>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

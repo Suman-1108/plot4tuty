@@ -1,9 +1,9 @@
 import { getPlots, getProjects } from '@/lib/storage';
 import Hero from '@/components/home/Hero';
-import WhyChooseUs from '@/components/home/WhyChooseUs';
-import FeaturedPlots from '@/components/home/FeaturedPlots';
-import ProjectShowcase from '@/components/home/ProjectShowcase';
-import HowItWorks from '@/components/home/HowItWorks';
+import StatsBanner from '@/components/home/StatsBanner';
+import PopularBentoGrid from '@/components/home/PopularBentoGrid';
+import PropertySuggestions from '@/components/home/PropertySuggestions';
+import ExploreCategories from '@/components/home/ExploreCategories';
 import MasterplanInteractive from '@/components/home/MasterplanInteractive';
 import ContactCTA from '@/components/home/ContactCTA';
 import UnitConverter from '@/components/plots/UnitConverter';
@@ -14,20 +14,20 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#F4F5F0]">
-      {/* 1. Immersive Hero with Curved Landscape Card & Dual Pill Action Buttons */}
+      {/* 1. Immersive Aerial Hero matching Reference (Wireframe outline + Editorial search) */}
       <Hero />
 
-      {/* 2. Why Choose Us (Dual-Column: Stats on Left + 3 Stacked Feature Cards on Right) */}
-      <WhyChooseUs />
+      {/* 2. Light Lime Stats Banner directly under Hero matching reference */}
+      <StatsBanner />
 
-      {/* 3. Top Land Corridors & Featured Plots (Harbour Enclave Phase 1 Showcase Container) */}
-      <FeaturedPlots plots={plots} />
+      {/* 3. Propriedades mais populares - Asymmetric Bento Grid matching reference */}
+      <PopularBentoGrid />
 
-      {/* 4. Plotted Layout Packages (Asymmetric 3-Card Block) */}
-      <ProjectShowcase projects={projects} />
+      {/* 4. Sugestões de propriedade que você pode gostar - Pill Filter Bar */}
+      <PropertySuggestions />
 
-      {/* 5. Booking Made as Easy as 1-2-3 Stepper */}
-      <HowItWorks />
+      {/* 5. Explore os tipos de propriedades - 4-Card Horizontal Verified Plot Row */}
+      <ExploreCategories />
 
       {/* 6. Interactive Masterplan Blueprint Inspector */}
       <MasterplanInteractive />
