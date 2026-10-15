@@ -33,7 +33,7 @@ const TOP_DESTINATIONS: DestinationCard[] = [
     priceFrom: '₹18.00 Lakhs',
     rating: '4.9',
     reviews: '42 Verified Plots',
-    image: 'https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=1000&q=80',
+    image: '/images/harbour-enclave.jpg',
     tag: 'VOC Port Corridor',
   },
   {
@@ -45,7 +45,7 @@ const TOP_DESTINATIONS: DestinationCard[] = [
     priceFrom: '₹22.50 Lakhs',
     rating: '5.0',
     reviews: '36 Verified Plots',
-    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80',
+    image: '/images/pearl-haven.jpg',
     tag: 'Collectorate Enclave',
   },
   {
@@ -57,7 +57,7 @@ const TOP_DESTINATIONS: DestinationCard[] = [
     priceFrom: '₹19.50 Lakhs',
     rating: '4.8',
     reviews: '28 Verified Plots',
-    image: 'https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&w=1000&q=80',
+    image: '/images/palayam-greens.jpg',
     tag: 'NH 138 Arterial',
   },
   {
@@ -69,7 +69,7 @@ const TOP_DESTINATIONS: DestinationCard[] = [
     priceFrom: '₹35.00 Lakhs',
     rating: '4.9',
     reviews: '18 Verified Plots',
-    image: 'https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=1000&q=80',
+    image: '/images/millerpuram.jpg',
     tag: 'Upscale City Center',
   },
 ];
@@ -122,7 +122,7 @@ export default function FeaturedPlots({ plots }: FeaturedPlotsProps) {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 {/* Gradient Contrast Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/40"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/30 pointer-events-none"></div>
 
                 {/* Top Pill Badge (matching "starts at P4,999" in screenshot) */}
                 <div className="relative z-10 flex items-center justify-between">

@@ -42,7 +42,7 @@ export const INITIAL_PLOTS: Plot[] = [
     ],
     images: [
       'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=1200&q=80',
+      '/images/harbour-enclave.jpg',
       'https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80'
     ],
@@ -132,7 +132,7 @@ export const INITIAL_PLOTS: Plot[] = [
       { name: 'Harbour Beach Promenade', distance: '5.0 km (10 mins)' }
     ],
     images: [
-      'https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=1200&q=80',
+      '/images/harbour-enclave.jpg',
       'https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=1200&q=80'
     ],
@@ -179,7 +179,7 @@ export const INITIAL_PLOTS: Plot[] = [
     images: [
       'https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=1200&q=80'
+      '/images/harbour-enclave.jpg'
     ],
     layoutPlotNumber: 'Plot #03',
     coordinates: { lat: 8.8021, lng: 78.1365 },
@@ -290,7 +290,7 @@ export const INITIAL_PROJECTS: Project[] = [
     image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=1200&q=80',
+      '/images/harbour-enclave.jpg',
       'https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80'
     ],
@@ -392,9 +392,9 @@ export const INITIAL_PROJECTS: Project[] = [
     approval: 'DTCP & RERA Approved',
     approvalNumber: 'TNRERA/LAYOUT/340/2023',
     description: 'A contemporary master-planned plotted layout engineered to cater to professionals, port personnel, and NRI investors seeking secure, appreciation-oriented real estate in coastal Thoothukudi.',
-    image: 'https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/harbour-enclave.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=1200&q=80',
+      '/images/harbour-enclave.jpg',
       'https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&w=1200&q=80'
     ],
     amenities: [

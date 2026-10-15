@@ -43,7 +43,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
             className="group relative rounded-3xl overflow-hidden border border-[#DADDD5] min-h-[380px] flex flex-col justify-between p-6 editorial-shadow"
           >
             <Image
-              src="https://images.unsplash.com/photo-1524813686514-a57563d77d61?auto=format&fit=crop&w=1200&q=80"
+              src="/images/harbour-enclave.jpg"
               alt="Harbour Enclave Phase 1 Plotted Community"
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
