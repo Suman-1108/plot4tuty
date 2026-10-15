@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Plot } from '@/lib/types';
@@ -44,11 +44,20 @@ export default function PlotDetailClient({ plot, similarPlots }: PlotDetailClien
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : `https://plot4tuty.com/plots/${plot.slug}`;
-
-  const whatsappMessage = encodeURIComponent(
-    `Hello Plot 4 Tuty, I am interested in ${plot.title} (${plot.layoutPlotNumber}) at ${plot.location}. Price: ${plot.priceDisplay}. Link: ${currentUrl}`
+  const staticUrl = `https://plot4tuty.com/plots/${plot.slug}`;
+  const [whatsappUrl, setWhatsappUrl] = useState(
+    `https://wa.me/919842155678?text=${encodeURIComponent(
+      `Hello Plot 4 Tuty, I am interested in ${plot.title} (${plot.layoutPlotNumber}) at ${plot.location}. Price: ${plot.priceDisplay}. Link: ${staticUrl}`
+    )}`
   );
+
+  useEffect(() => {
+    setWhatsappUrl(
+      `https://wa.me/919842155678?text=${encodeURIComponent(
+        `Hello Plot 4 Tuty, I am interested in ${plot.title} (${plot.layoutPlotNumber}) at ${plot.location}. Price: ${plot.priceDisplay}. Link: ${window.location.href}`
+      )}`
+    );
+  }, [plot]);
 
   const handleShare = () => {
     if (navigator.clipboard) {
@@ -312,7 +321,7 @@ export default function PlotDetailClient({ plot, similarPlots }: PlotDetailClien
               {/* Action Buttons */}
               <div className="space-y-2.5 mb-6">
                 <a
-                  href={`https://wa.me/919842155678?text=${whatsappMessage}`}
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center space-x-2 py-3 px-4 bg-[#668F35] hover:bg-[#53752A] text-white rounded-lg text-xs font-bold transition-colors shadow-sm"

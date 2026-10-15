@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
+    <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
       <body className="min-h-full flex flex-col bg-[#F4F5F0] text-[#222222] antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
