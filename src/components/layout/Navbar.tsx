@@ -58,16 +58,24 @@ export default function Navbar() {
       {/* Main Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative h-14 w-48 sm:w-56 flex items-center">
+          {/* Round Logo */}
+          <Link href="/" className="flex items-center space-x-3 group py-1">
+            <div className="relative h-12 w-12 sm:h-14 sm:w-14 rounded-full overflow-hidden bg-white border-2 border-[#DADDD5] group-hover:border-[#668F35] shadow-xs transition-all duration-200 group-hover:scale-105 shrink-0">
               <Image
-                src="/logo.png"
-                alt="PLOT 4 TUTY — Find Your Land. Build Your Future."
+                src="/logo-round.png"
+                alt="PLOT 4 TUTY"
                 fill
                 priority
-                className="object-contain object-left transition-transform duration-200 group-hover:scale-[1.02]"
+                className="object-cover rounded-full"
               />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-base sm:text-lg font-black tracking-tight text-[#222222] leading-none group-hover:text-[#668F35] transition-colors">
+                PLOT 4 TUTY<span className="text-[#668F35]"></span>
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-bold text-[#666A5D] tracking-wider uppercase mt-1">
+                FIND YOUR LAND. BUILD YOUR FUTURE.
+              </span>
             </div>
           </Link>
 

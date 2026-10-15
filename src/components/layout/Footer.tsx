@@ -9,19 +9,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-[#DADDD5]">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block">
-              <div className="relative h-12 w-48">
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="relative h-14 w-14 rounded-full overflow-hidden bg-white border-2 border-[#DADDD5] group-hover:border-[#668F35] shadow-xs shrink-0 transition-all">
                 <Image
-                  src="/logo.png"
+                  src="/logo-round.png"
                   alt="PLOT 4 TUTY"
                   fill
-                  className="object-contain object-left"
+                  className="object-cover rounded-full"
                 />
               </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-black tracking-tight text-[#222222] leading-none group-hover:text-[#668F35] transition-colors">
+                  PLOT 4 TUTY<span className="text-[#668F35]">.</span>
+                </span>
+                <span className="text-[10px] font-bold text-[#668F35] tracking-widest uppercase mt-1">
+                  FIND YOUR LAND. BUILD YOUR FUTURE.
+                </span>
+              </div>
             </Link>
-            <p className="text-xs uppercase tracking-widest text-[#668F35] font-semibold">
-              Find Your Land. Build Your Future.
-            </p>
             <p className="text-sm text-[#666A5D] leading-relaxed max-w-sm">
               Thoothukudi&apos;s premier land discovery platform for DTCP-approved and RERA-registered residential plots. We ensure 100% legal title clearance, transparent registration support, and prime plotted communities.
             </p>

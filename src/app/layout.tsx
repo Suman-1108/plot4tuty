@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Plot 4 Tuty' }],
   metadataBase: new URL('https://plot4tuty.com'),
+  icons: {
+    icon: '/logo-round.png',
+    apple: '/logo-round.png',
+  },
   openGraph: {
     title: 'PLOT 4 TUTY — Find Your Land. Build Your Future.',
     description: 'Verified DTCP Approved residential plots in Thoothukudi, Tamil Nadu.',
