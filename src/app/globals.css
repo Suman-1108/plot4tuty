@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F4F5F0;
+  --foreground: #222222;
+  --brand-green: #668F35;
+  --brand-green-hover: #53752A;
+  --brand-green-light: #EDF3E4;
+  --brand-card: #FFFFFF;
+  --brand-border: #DADDD5;
+  --brand-muted: #666A5D;
+  --brand-dark: #1A1A1A;
+}
+
+@theme {
+  --color-brand-bg: #F4F5F0;
+  --color-brand-green: #668F35;
+  --color-brand-green-hover: #53752A;
+  --color-brand-green-light: #EDF3E4;
+  --color-brand-charcoal: #222222;
+  --color-brand-card: #FFFFFF;
+  --color-brand-border: #DADDD5;
+  --color-brand-muted: #666A5D;
+  --color-brand-dark: #1A1A1A;
+  --font-serif: "Playfair Display", Georgia, serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F5F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #DADDD5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #668F35;
+}
+
+/* Restrained subtle shadow matching editorial real estate design */
+.editorial-shadow {
+  box-shadow: 0 4px 20px -2px rgba(34, 34, 34, 0.05), 0 2px 6px -1px rgba(34, 34, 34, 0.02);
+}
+
+.editorial-shadow-lg {
+  box-shadow: 0 10px 30px -4px rgba(34, 34, 34, 0.08), 0 4px 10px -2px rgba(34, 34, 34, 0.03);
+}
+
+/* Image container aspect ratios */
+.aspect-land {
+  aspect-ratio: 16 / 10;
+}

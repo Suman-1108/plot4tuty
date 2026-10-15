@@ -1,0 +1,28 @@
+[
+  {
+    "id": "enq-1",
+    "plotId": "plot-1",
+    "plotTitle": "Pearl Haven - Premium Corner Villa Plot",
+    "name": "K. Balasubramanian",
+    "phone": "+91 98421 55678",
+    "email": "bala.tuticorin@gmail.com",
+    "message": "Interested in Plot #18 in Pearl Haven. Would like to schedule an on-site visit this Saturday.",
+    "preferredLocation": "Korampallam",
+    "budget": "₹30L - ₹35L",
+    "status": "New",
+    "createdAt": "2026-03-14T10:30:00Z"
+  },
+  {
+    "id": "enq-2",
+    "plotId": "plot-2",
+    "plotTitle": "Palayam Greens - Four-Lane Connected Residential Plot",
+    "name": "S. Rajendran",
+    "phone": "+91 94432 89012",
+    "email": "rajendran.tn@outlook.com",
+    "message": "Please share DTCP approval copy and survey layout map for Palayam Greens plot.",
+    "preferredLocation": "Palayamkottai Road",
+    "budget": "₹25L",
+    "status": "Contacted",
+    "createdAt": "2026-03-13T14:15:00Z"
+  }
+]
