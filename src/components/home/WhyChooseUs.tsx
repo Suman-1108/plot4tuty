@@ -1,92 +1,136 @@
-import { ShieldCheck, FileCheck, Compass, Landmark, Users, CheckCircle } from 'lucide-react';
+import {
+  MapPin,
+  CalendarCheck,
+  Headphones,
+  Users,
+  Award,
+  ShieldCheck,
+  Phone,
+  MessageSquare,
+  FileCheck,
+  CheckCircle2
+} from 'lucide-react';
 
 export default function WhyChooseUs() {
-  const pillars = [
-    {
-      icon: ShieldCheck,
-      title: '100% DTCP & TNRERA Verified',
-      description: 'Every layout listed on Plot 4 Tuty has valid Directorate of Town & Country Planning approvals and active TNRERA registrations with verified survey numbers.'
-    },
-    {
-      icon: FileCheck,
-      title: '30-Year Legal Title Search',
-      description: 'Our senior real estate legal advocates verify mother deeds, parent documents, encumbrance certificates (EC), and patta sub-divisions prior to publishing.'
-    },
-    {
-      icon: Compass,
-      title: 'On-Ground Demarcation & Infrastructure',
-      description: 'Permanent boundary stone pillars, 40ft & 33ft blacktop metal roads, street solar illumination, and tested potable sweet groundwater at safe depths.'
-    },
-    {
-      icon: Landmark,
-      title: 'Direct Bank Loan Approvals',
-      description: 'Pre-approved plot purchase and villa construction loans with top nationalized and private banks (SBI, HDFC, Canara, Indian Bank) at standard residential rates.'
-    }
-  ];
-
   return (
-    <section className="py-16 sm:py-24 bg-white border-y border-[#DADDD5]">
+    <section className="py-14 sm:py-20 bg-[#F4F5F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center space-x-1.5 text-xs font-semibold uppercase tracking-wider text-[#668F35] mb-2">
-            <CheckCircle className="w-4 h-4" />
-            <span>The Plot 4 Tuty Advantage</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#222222]">
-            Why Land Buyers in Thoothukudi Trust Us
-          </h2>
-          <p className="text-sm sm:text-base text-[#666A5D] mt-2 leading-relaxed">
-            Buying land is your most significant generational investment. We eliminate legal uncertainty, brokerage markups, and development delays.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Title, Description, Socials & 3 Stat Pills (matching reference) */}
+          <div className="lg:col-span-7 space-y-6">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#222222] tracking-tight leading-tight">
+              Why Hundreds of Land Buyers Choose <br />
+              <span className="text-[#668F35]">PLOT 4 TUTY</span> for Their Thoothukudi Land
+            </h2>
 
-        {/* 4 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {pillars.map((pillar, i) => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={i}
-                className="bg-[#F4F5F0] rounded-xl border border-[#DADDD5] p-6 editorial-shadow hover:border-[#668F35] transition-colors flex flex-col justify-between"
+            <p className="text-sm sm:text-base text-[#55594D] leading-relaxed max-w-xl">
+              From the coastal breeze of Harbour Enclave to Korampallam administrative corridors, we make buying residential plots transparent, legally certified, and future-proof with expert-verified title search and ready on-ground development.
+            </p>
+
+            {/* Quick Contact Icons */}
+            <div className="flex items-center space-x-3 pt-1">
+              <a
+                href="https://wa.me/919842155678"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-white border border-[#DADDD5] flex items-center justify-center text-[#668F35] hover:bg-[#668F35] hover:text-white transition-colors"
+                title="WhatsApp Direct"
               >
-                <div>
-                  <div className="w-10 h-10 rounded-lg bg-[#EDF3E4] border border-[#668F35]/30 flex items-center justify-center text-[#668F35] mb-4">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-base font-bold text-[#222222] mb-2">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-xs text-[#666A5D] leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
+                <MessageSquare className="w-4 h-4" />
+              </a>
+              <a
+                href="tel:+919842155678"
+                className="w-9 h-9 rounded-full bg-white border border-[#DADDD5] flex items-center justify-center text-[#222222] hover:bg-[#668F35] hover:text-white transition-colors"
+                title="Direct Phone"
+              >
+                <Phone className="w-4 h-4" />
+              </a>
+              <div className="flex items-center space-x-1.5 text-xs text-[#666A5D] bg-white px-3 py-1.5 rounded-full border border-[#DADDD5]">
+                <MapPin className="w-3.5 h-3.5 text-[#668F35]" />
+                <span>Palayamkottai Road, Thoothukudi</span>
+              </div>
+            </div>
 
-                <div className="mt-4 pt-3 border-t border-[#DADDD5]/50 flex items-center space-x-1.5 text-[11px] font-semibold text-[#668F35]">
-                  <span>Verified Standard</span>
-                  <span>✓</span>
+            {/* 3 Stats Row (matching the 3 circular icons in reference: 12k, 10yrs, 50+) */}
+            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#DADDD5]/80">
+              <div className="text-center sm:text-left space-y-1">
+                <div className="w-10 h-10 rounded-full bg-[#EDF3E4] border border-[#668F35]/30 flex items-center justify-center text-[#668F35] mx-auto sm:mx-0">
+                  <Users className="w-5 h-5" />
+                </div>
+                <div className="text-xl sm:text-2xl font-black text-[#222222]">450+</div>
+                <div className="text-[11px] text-[#666A5D] font-medium leading-tight">
+                  Happy Plot Owners in Tuticorin
                 </div>
               </div>
-            );
-          })}
-        </div>
 
-        {/* Local Growth Stats Bar */}
-        <div className="mt-14 bg-[#222222] text-[#F4F5F0] rounded-xl p-8 editorial-shadow-lg grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div>
-            <span className="block text-2xl sm:text-4xl font-extrabold text-[#668F35]">15+</span>
-            <span className="text-xs text-gray-300 uppercase tracking-wider mt-1 block">Years Local Expertise</span>
+              <div className="text-center sm:text-left space-y-1">
+                <div className="w-10 h-10 rounded-full bg-[#EDF3E4] border border-[#668F35]/30 flex items-center justify-center text-[#668F35] mx-auto sm:mx-0">
+                  <Award className="w-5 h-5" />
+                </div>
+                <div className="text-xl sm:text-2xl font-black text-[#222222]">15+ Yrs</div>
+                <div className="text-[11px] text-[#666A5D] font-medium leading-tight">
+                  Regional Land Expertise
+                </div>
+              </div>
+
+              <div className="text-center sm:text-left space-y-1">
+                <div className="w-10 h-10 rounded-full bg-[#EDF3E4] border border-[#668F35]/30 flex items-center justify-center text-[#668F35] mx-auto sm:mx-0">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div className="text-xl sm:text-2xl font-black text-[#222222]">100%</div>
+                <div className="text-[11px] text-[#666A5D] font-medium leading-tight">
+                  DTCP &amp; TNRERA Clear Titles
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <span className="block text-2xl sm:text-4xl font-extrabold text-white">450+</span>
-            <span className="text-xs text-gray-300 uppercase tracking-wider mt-1 block">Plots Registered</span>
-          </div>
-          <div>
-            <span className="block text-2xl sm:text-4xl font-extrabold text-[#668F35]">100%</span>
-            <span className="text-xs text-gray-300 uppercase tracking-wider mt-1 block">Clean Title Records</span>
-          </div>
-          <div>
-            <span className="block text-2xl sm:text-4xl font-extrabold text-white">4 Corridors</span>
-            <span className="text-xs text-gray-300 uppercase tracking-wider mt-1 block">High Growth Zones</span>
+
+          {/* Right Column: 3 Stacked Rounded Feature Cards (matching reference) */}
+          <div className="lg:col-span-5 space-y-4">
+            {/* Card 1: Local Expertise */}
+            <div className="bg-[#8A9A86]/20 border border-[#8A9A86]/40 rounded-2xl p-5 sm:p-6 editorial-shadow flex items-start space-x-4">
+              <div className="w-12 h-12 rounded-xl bg-[#668F35] text-white flex items-center justify-center shrink-0 shadow-sm">
+                <FileCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-[#222222]">
+                  Local Thoothukudi Expertise
+                </h3>
+                <p className="text-xs text-[#55594D] mt-1 leading-relaxed">
+                  Our native real estate specialists craft unencumbered land offerings with verified 30-year mother deed searches you won&apos;t find through ordinary brokers.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2: All-in-One Booking & Registry */}
+            <div className="bg-[#8A9A86]/20 border border-[#8A9A86]/40 rounded-2xl p-5 sm:p-6 editorial-shadow flex items-start space-x-4">
+              <div className="w-12 h-12 rounded-xl bg-[#222222] text-white flex items-center justify-center shrink-0 shadow-sm">
+                <CalendarCheck className="w-6 h-6 text-[#668F35]" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-[#222222]">
+                  All-in-One Booking &amp; Registry
+                </h3>
+                <p className="text-xs text-[#55594D] mt-1 leading-relaxed">
+                  Everything handled in one place: on-site vehicle inspection, layout map review, Sub-Registrar registration, and nationalized bank loan approvals.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3: 24/7 On-Ground Support */}
+            <div className="bg-[#8A9A86]/20 border border-[#8A9A86]/40 rounded-2xl p-5 sm:p-6 editorial-shadow flex items-start space-x-4">
+              <div className="w-12 h-12 rounded-xl bg-[#668F35] text-white flex items-center justify-center shrink-0 shadow-sm">
+                <Headphones className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-[#222222]">
+                  24/7 On-Ground Support
+                </h3>
+                <p className="text-xs text-[#55594D] mt-1 leading-relaxed">
+                  We are here anytime on the ground in Thoothukudi. Get real-time WhatsApp video walkthroughs, boundary stone coordinates, and registration guidance.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
