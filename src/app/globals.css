@@ -2,26 +2,26 @@
 
 :root {
   --background: #F4F5F0;
-  --foreground: #222222;
-  --brand-green: #668F35;
-  --brand-green-hover: #53752A;
-  --brand-green-light: #EDF3E4;
+  --foreground: #111827;
+  --brand-green: #15803D;
+  --brand-green-hover: #166534;
+  --brand-green-light: #ECFDF5;
   --brand-card: #FFFFFF;
   --brand-border: #DADDD5;
-  --brand-muted: #666A5D;
-  --brand-dark: #1A1A1A;
+  --brand-muted: #4B5563;
+  --brand-dark: #0F291E;
 }
 
 @theme {
   --color-brand-bg: #F4F5F0;
-  --color-brand-green: #668F35;
-  --color-brand-green-hover: #53752A;
-  --color-brand-green-light: #EDF3E4;
-  --color-brand-charcoal: #222222;
+  --color-brand-green: #15803D;
+  --color-brand-green-hover: #166534;
+  --color-brand-green-light: #ECFDF5;
+  --color-brand-charcoal: #111827;
   --color-brand-card: #FFFFFF;
   --color-brand-border: #DADDD5;
-  --color-brand-muted: #666A5D;
-  --color-brand-dark: #1A1A1A;
+  --color-brand-muted: #4B5563;
+  --color-brand-dark: #0F291E;
   --font-serif: "Playfair Display", Georgia, serif;
 }
 
@@ -36,27 +36,27 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: #F4F5F0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #DADDD5;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #668F35;
+  background: #15803D;
 }
 
-/* Restrained subtle shadow matching editorial real estate design */
+/* Subtle shadows matching premium editorial real estate design */
 .editorial-shadow {
-  box-shadow: 0 4px 20px -2px rgba(34, 34, 34, 0.05), 0 2px 6px -1px rgba(34, 34, 34, 0.02);
+  box-shadow: 0 4px 20px -2px rgba(17, 24, 39, 0.05), 0 2px 6px -1px rgba(17, 24, 39, 0.02);
 }
 
 .editorial-shadow-lg {
-  box-shadow: 0 10px 30px -4px rgba(34, 34, 34, 0.08), 0 4px 10px -2px rgba(34, 34, 34, 0.03);
+  box-shadow: 0 10px 30px -4px rgba(17, 24, 39, 0.08), 0 4px 10px -2px rgba(17, 24, 39, 0.03);
 }
 
 /* Image container aspect ratios */

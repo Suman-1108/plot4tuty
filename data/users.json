@@ -1,0 +1,32 @@
+[
+  {
+    "id": "usr-customer-1",
+    "name": "K. Arumugam",
+    "email": "buyer@thoothukudi.com",
+    "phone": "+91 98421 98765",
+    "role": "customer",
+    "savedPlotIds": [
+      "plot-ap-30",
+      "plot-tkd-04"
+    ],
+    "createdAt": "2026-03-05"
+  },
+  {
+    "id": "usr-seller-1",
+    "name": "S. Muthuraman",
+    "email": "muthu@plot4tuty.com",
+    "phone": "+91 98421 55678",
+    "role": "seller",
+    "savedPlotIds": [],
+    "createdAt": "2026-01-10"
+  },
+  {
+    "id": "usr-admin-1",
+    "name": "Platform Administrator",
+    "email": "admin@plot4tuty.com",
+    "phone": "+91 98421 55678",
+    "role": "admin",
+    "savedPlotIds": [],
+    "createdAt": "2026-01-01"
+  }
+]

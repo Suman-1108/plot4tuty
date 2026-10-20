@@ -2,229 +2,176 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowUpRight, ShieldCheck, Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1C2618] text-[#DCE6CE] pt-16 pb-10 border-t border-[#2C3826]">
+    <footer className="bg-[#0F291E] text-[#DCE6CE] pt-16 pb-10 border-t border-[#1C3D2E]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-[#2C3826]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-[#1C3D2E]">
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative h-12 w-12 rounded-full overflow-hidden bg-white border border-[#3C4E34] group-hover:border-[#B7E436] shadow-sm shrink-0 transition-all">
+              <div className="relative h-12 w-12 rounded-full overflow-hidden bg-white border border-emerald-600/40 group-hover:border-emerald-400 shadow-sm shrink-0 transition-all">
                 <Image
                   src="/logo-round.png"
-                  alt="PLOT 4 TUTY"
+                  alt="PLOT FOR THOOTHUKUDI"
                   fill
                   className="object-cover rounded-full"
                 />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-black tracking-tight text-white leading-none">
-                  PLOT 4 TUTY<span className="text-[#B7E436]">.</span>
+                  PLOT 4 TUTY<span className="text-emerald-400">.</span>
                 </span>
-                <span className="text-[10px] font-bold text-[#8FA57C] tracking-widest uppercase mt-1">
+                <span className="text-[10px] font-bold text-emerald-300 tracking-widest uppercase mt-1">
                   FIND YOUR LAND. BUILD YOUR FUTURE.
                 </span>
               </div>
             </Link>
 
-            <p className="text-xs sm:text-sm text-[#A9BA99] leading-relaxed max-w-sm">
-              Trazemos inteligência em análise fundiária, territorial e documentação com tecnologia de ponta. Delivering verified DTCP land layouts and high-growth investments across Thoothukudi, Tamil Nadu.
+            <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed max-w-sm">
+              The premier subscription-based residential land marketplace dedicated exclusively to Thoothukudi district, Tamil Nadu. Delivering 100% DTCP-approved layouts, Patta-verified plots, and high-growth land investments with transparent documentation.
             </p>
 
-            {/* Social Icons matching reference */}
-            <div className="flex items-center space-x-3 pt-2">
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="w-8 h-8 rounded-full bg-[#273521] hover:bg-[#B7E436] hover:text-[#1C2618] text-[#CAD5BE] flex items-center justify-center text-xs font-bold transition-colors"
-              >
-                f
-              </a>
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="w-8 h-8 rounded-full bg-[#273521] hover:bg-[#B7E436] hover:text-[#1C2618] text-[#CAD5BE] flex items-center justify-center text-xs font-bold transition-colors"
-              >
-                ig
-              </a>
-              <a
-                href="#"
-                aria-label="Twitter / X"
-                className="w-8 h-8 rounded-full bg-[#273521] hover:bg-[#B7E436] hover:text-[#1C2618] text-[#CAD5BE] flex items-center justify-center text-xs font-bold transition-colors"
-              >
-                x
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="w-8 h-8 rounded-full bg-[#273521] hover:bg-[#B7E436] hover:text-[#1C2618] text-[#CAD5BE] flex items-center justify-center text-xs font-bold transition-colors"
-              >
-                in
-              </a>
+            <div className="flex items-center space-x-2 text-xs text-emerald-300 pt-1">
+              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>TN RERA Registered • DTCP Approved • Clear Title Guarantee</span>
             </div>
           </div>
 
-          {/* Col 1: EMPRESA */}
+          {/* Key Locality Corridors */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white tracking-widest uppercase">
-              EMPRESA
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+              Thoothukudi Corridors
             </h4>
-            <ul className="space-y-2 text-xs text-[#A9BA99]">
+            <ul className="space-y-2 text-xs text-emerald-100/70">
               <li>
-                <Link href="/about" className="hover:text-[#B7E436] transition-colors">
-                  Institucional
+                <Link href="/plots?location=Tharuvaikulam" className="hover:text-white transition-colors">
+                  Tharuvaikulam (ECR Corridor)
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#B7E436] transition-colors">
-                  Contato &amp; Plantão
+                <Link href="/plots?location=Millerpuram" className="hover:text-white transition-colors">
+                  Millerpuram Residential
                 </Link>
               </li>
               <li>
-                <Link href="/plots" className="hover:text-[#B7E436] transition-colors">
-                  Buscar Imóvel
+                <Link href="/plots?location=Korampallam" className="hover:text-white transition-colors">
+                  Korampallam Collectorate Hub
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="hover:text-[#B7E436] transition-colors">
-                  Empreendimentos
+                <Link href="/plots?location=Harbour" className="hover:text-white transition-colors">
+                  Harbour Express Highway
+                </Link>
+              </li>
+              <li>
+                <Link href="/plots?location=Palayamkottai" className="hover:text-white transition-colors">
+                  Palayamkottai Road Corridor
+                </Link>
+              </li>
+              <li>
+                <Link href="/plots?location=Ettayapuram" className="hover:text-white transition-colors">
+                  Ettayapuram Road Junction
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 2: PLANOS PARA */}
+          {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white tracking-widest uppercase">
-              SOLUÇÕES
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+              Customer Directory
             </h4>
-            <ul className="space-y-2 text-xs text-[#A9BA99]">
+            <ul className="space-y-2 text-xs text-emerald-100/70">
               <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Instituições Financeiras
-                </span>
+                <Link href="/plots" className="hover:text-white transition-colors">
+                  Browse All Plots
+                </Link>
               </li>
               <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Cartórios de Registro
-                </span>
+                <Link href="/projects" className="hover:text-white transition-colors">
+                  Layout Masterplans
+                </Link>
               </li>
               <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Aprovações DTCP &amp; TNRERA
-                </span>
+                <Link href="/compare" className="hover:text-white transition-colors">
+                  Compare Land Plots
+                </Link>
               </li>
               <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Poder Judiciário &amp; Pareceres
-                </span>
+                <Link href="/locations" className="hover:text-white transition-colors">
+                  Prime Locations &amp; Corridors
+                </Link>
               </li>
               <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Investidores &amp; NRIs
-                </span>
+                <Link href="/account" className="hover:text-white transition-colors">
+                  Buyer Saved Plots &amp; Enquiries
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Schedule Free Site Visit
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: SERVIÇOS */}
+          {/* Contact Details */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white tracking-widest uppercase">
-              SERVIÇOS
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+              Thoothukudi Office
             </h4>
-            <ul className="space-y-2 text-xs text-[#A9BA99]">
-              <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Due Diligence Fundiária
+            <div className="space-y-2.5 text-xs text-emerald-100/80">
+              <div className="flex items-start space-x-2">
+                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>
+                  No. 42/B, Palayamkottai Road, Near Collectorate, Thoothukudi – 628003, Tamil Nadu
                 </span>
-              </li>
-              <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Análise Topográfica
+              </div>
+              <div className="flex items-center space-x-2">
+                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a href="tel:+919842155678" className="hover:text-white">
+                  +91 98421 55678
+                </a>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a href="mailto:contact@plot4tuty.com" className="hover:text-white">
+                  contact@plot4tuty.com
+                </a>
+              </div>
+              <div className="pt-2">
+                <span className="inline-block px-2.5 py-1 bg-emerald-950/80 border border-emerald-700/50 rounded text-[11px] text-emerald-300">
+                  Site Visits: Mon - Sun (7 AM - 6 PM)
                 </span>
-              </li>
-              <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Regularização de Terrenos
-                </span>
-              </li>
-              <li>
-                <span className="hover:text-[#B7E436] transition-colors cursor-pointer">
-                  Preservação de Áreas Verdes
-                </span>
-              </li>
-              <li>
-                <Link href="/admin" className="text-[11px] text-[#697B59] hover:text-[#B7E436] transition-colors">
-                  Acesso Restrito Admin
-                </Link>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Contact Banner matching reference: Entre Em Contato */}
-        <div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 border-b border-[#2C3826] text-xs">
-          <div>
-            <h5 className="text-sm font-bold text-white mb-1">
-              Entre Em Contato
-            </h5>
-            <p className="text-[#A9BA99] leading-snug">
-              Tem dúvidas ou precisa de assistência? Estamos aqui para ajudar!
-            </p>
-          </div>
-
-          <div>
-            <h6 className="text-[11px] font-bold uppercase tracking-wider text-[#8FA57C] mb-1">
-              ENDEREÇO
-            </h6>
-            <p className="text-white leading-snug">
-              Palayamkottai Road, Near Collectorate, Thoothukudi, Tamil Nadu - 628008
-            </p>
-          </div>
-
-          <div>
-            <h6 className="text-[11px] font-bold uppercase tracking-wider text-[#8FA57C] mb-1">
-              TELEFONE
-            </h6>
-            <a
-              href="tel:+919842155678"
-              className="text-white hover:text-[#B7E436] transition-colors font-medium"
-            >
-              +91 98421 55678 / +91 461 2345678
-            </a>
-          </div>
-
-          <div>
-            <h6 className="text-[11px] font-bold uppercase tracking-wider text-[#8FA57C] mb-1">
-              EMAIL
-            </h6>
-            <a
-              href="mailto:contact@plot4tuty.com"
-              className="text-white hover:text-[#B7E436] transition-colors font-medium"
-            >
-              contact@plot4tuty.com
-            </a>
-          </div>
-        </div>
-
-        {/* Bottom Line */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#7E906E] gap-3">
+        {/* Bottom Strip */}
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-emerald-200/60 space-y-4 sm:space-y-0">
           <p>
-            © Plot 4 Tuty 2026. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} PLOT FOR THOOTHUKUDI. All rights reserved. TN RERA &amp; DTCP compliant residential land marketplace.
           </p>
-          <div className="flex items-center space-x-6">
-            <Link href="/about" className="hover:text-white transition-colors">
-              Help
+          <div className="flex items-center space-x-6 text-xs">
+            <Link href="/about" className="hover:text-white">
+              About Us
             </Link>
-            <Link href="/about" className="hover:text-white transition-colors">
-              Termos de serviço
+            <Link href="/contact" className="hover:text-white">
+              Contact &amp; Support
             </Link>
-            <Link href="/about" className="hover:text-white transition-colors">
-              Política de privacidade
+            <Link href="/locations" className="hover:text-white">
+              Locations
+            </Link>
+            <Link href="/privacy" className="hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-white">
+              Terms of Service
             </Link>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getPlots, savePlot, deletePlot } from '@/lib/storage';
+import { getPlots, savePlot, deletePlot, updatePlotStatus } from '@/lib/storage';
 
 export async function GET(
   request: Request,
@@ -34,6 +34,30 @@ export async function PUT(
   } catch (error) {
     console.error('API Plot PUT error:', error);
     return NextResponse.json({ success: false, error: 'Failed to update plot' }, { status: 500 });
+  }
+}
+
+export async function PATCH(
+  request: Request,
+  context: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await context.params;
+    const body = await request.json();
+
+    if (body.status) {
+      const updated = await updatePlotStatus(id, body.status);
+      if (!updated) {
+        return NextResponse.json({ success: false, error: 'Plot not found' }, { status: 404 });
+      }
+      return NextResponse.json({ success: true, plot: updated });
+    }
+
+    const updated = await savePlot({ ...body, id });
+    return NextResponse.json({ success: true, plot: updated });
+  } catch (error) {
+    console.error('API Plot PATCH error:', error);
+    return NextResponse.json({ success: false, error: 'Failed to patch plot' }, { status: 500 });
   }
 }
 

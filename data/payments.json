@@ -1,0 +1,44 @@
+[
+  {
+    "id": "pay-101",
+    "invoiceNumber": "INV-2026-001",
+    "sellerId": "sel-1",
+    "sellerName": "Muthu Promoters & Land Developers",
+    "planId": "developer-pro",
+    "amount": 6999,
+    "gstAmount": 1259.82,
+    "totalAmount": 8258.82,
+    "paymentGateway": "Razorpay",
+    "transactionId": "pay_rzp_live_839103982",
+    "status": "Completed",
+    "createdAt": "2026-03-01T10:00:00.000Z"
+  },
+  {
+    "id": "pay-102",
+    "invoiceNumber": "INV-2026-002",
+    "sellerId": "sel-2",
+    "sellerName": "Pearl City Land Holdings",
+    "planId": "growth",
+    "amount": 2499,
+    "gstAmount": 449.82,
+    "totalAmount": 2948.82,
+    "paymentGateway": "Razorpay",
+    "transactionId": "pay_rzp_live_728192837",
+    "status": "Completed",
+    "createdAt": "2026-03-10T14:30:00.000Z"
+  },
+  {
+    "id": "pay-103",
+    "invoiceNumber": "INV-2026-003",
+    "sellerId": "sel-3",
+    "sellerName": "Alagarsamy Lands (Individual Owner)",
+    "planId": "starter",
+    "amount": 999,
+    "gstAmount": 179.82,
+    "totalAmount": 1178.82,
+    "paymentGateway": "Test Mode",
+    "transactionId": "pay_test_99210192",
+    "status": "Completed",
+    "createdAt": "2026-03-15T09:15:00.000Z"
+  }
+]

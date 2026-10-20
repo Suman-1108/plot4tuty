@@ -1,0 +1,41 @@
+[
+  {
+    "id": "sub-1",
+    "sellerId": "sel-1",
+    "planId": "developer-pro",
+    "planName": "Developer Pro (Layout Promoters)",
+    "status": "active",
+    "startDate": "2026-03-01",
+    "endDate": "2026-04-01",
+    "listingsUsed": 3,
+    "listingLimit": 50,
+    "amountPaid": 8258.82,
+    "invoiceNumber": "INV-2026-001"
+  },
+  {
+    "id": "sub-2",
+    "sellerId": "sel-2",
+    "planId": "growth",
+    "planName": "Growth (Agent / Broker)",
+    "status": "active",
+    "startDate": "2026-03-10",
+    "endDate": "2026-04-10",
+    "listingsUsed": 2,
+    "listingLimit": 10,
+    "amountPaid": 2948.82,
+    "invoiceNumber": "INV-2026-002"
+  },
+  {
+    "id": "sub-3",
+    "sellerId": "sel-3",
+    "planId": "starter",
+    "planName": "Starter (Land Owner)",
+    "status": "active",
+    "startDate": "2026-03-15",
+    "endDate": "2026-04-15",
+    "listingsUsed": 1,
+    "listingLimit": 2,
+    "amountPaid": 1178.82,
+    "invoiceNumber": "INV-2026-003"
+  }
+]

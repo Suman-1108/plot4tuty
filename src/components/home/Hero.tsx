@@ -3,211 +3,311 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Search, MapPin, Check } from 'lucide-react';
+import {
+  Search,
+  MapPin,
+  CheckCircle2,
+  Phone,
+  FileCheck,
+  Send,
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  Layers
+} from 'lucide-react';
 
 export default function Hero() {
   const router = useRouter();
-  const [activeType, setActiveType] = useState<'buy' | 'gated' | 'investment'>('buy');
-  const [corridor, setCorridor] = useState('all');
-  const [query, setQuery] = useState('');
 
-  const handleSearch = (e: React.FormEvent) => {
+  // Search Bar State
+  const [locality, setLocality] = useState('all');
+  const [budget, setBudget] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Top Lead Form State (Aura Phase II style lead box)
+  const [leadForm, setLeadForm] = useState({
+    name: '',
+    phone: '',
+    locality: 'Tharuvaikulam',
+    budget: 'under-15',
+  });
+  const [submittingLead, setSubmittingLead] = useState(false);
+  const [leadSuccess, setLeadSuccess] = useState(false);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const params = new URLSearchParams();
-    if (corridor !== 'all') params.set('location', corridor);
-    if (query.trim()) params.set('q', query.trim());
-    router.push(params.toString() ? `/plots?${params.toString()}` : '/plots');
+    if (locality !== 'all') params.set('location', locality);
+    if (budget !== 'all') params.set('budgetRange', budget);
+    if (searchQuery.trim()) params.set('q', searchQuery.trim());
+    router.push(`/plots?${params.toString()}`);
   };
 
-  const handleQuickTag = (tag: string) => {
-    setCorridor(tag);
-    router.push(`/plots?location=${encodeURIComponent(tag)}`);
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!leadForm.name || !leadForm.phone) return;
+
+    setSubmittingLead(true);
+    try {
+      const res = await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: leadForm.name,
+          phone: leadForm.phone,
+          preferredLocation: leadForm.locality,
+          budget: leadForm.budget,
+          message: `Hero enquiry: Requesting plot pricing and layout masterplan for ${leadForm.locality} with budget ${leadForm.budget}.`,
+          enquiryType: 'Price Quote',
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setLeadSuccess(true);
+        if (data.whatsappUrl) {
+          // Open WhatsApp in new tab for direct consultation
+          window.open(data.whatsappUrl, '_blank');
+        }
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSubmittingLead(false);
+    }
   };
 
   return (
-    <section
-      suppressHydrationWarning
-      className="relative w-full overflow-hidden min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] flex flex-col justify-between"
-    >
-      {/* 100% Full-Bleed Aerial Photography */}
-      <Image
-        src="/images/hero-aerial-golden.jpg"
-        alt="Vast aerial residential land parcel in Thoothukudi, Tamil Nadu"
-        fill
-        priority
-        className="object-cover object-center"
-      />
-
-      {/* Atmospheric Contrast Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/80 pointer-events-none"></div>
-
-      {/* Traced Glowing Demarcation Polygon Overlay (Demarcating plots across the landscape) */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="0 0 1000 600"
-        preserveAspectRatio="none"
-      >
-        <defs>
-          <filter id="hero-glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3.5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
-        {/* Masterplot 1 Wireframe on the sunny rolling hills */}
-        <polygon
-          points="520,330 800,280 920,440 630,490"
-          fill="rgba(183, 228, 54, 0.14)"
-          stroke="#D8FF54"
-          strokeWidth="2.5"
-          strokeDasharray="8 4"
-          filter="url(#hero-glow)"
-          className="animate-pulse"
+    <section className="relative w-full overflow-hidden min-h-[660px] lg:min-h-[720px] flex items-center bg-[#0C1E14]">
+      {/* 1. Authentic Aerial Plotted Layout Drone Photography */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/plots/aerial-layout-grid.jpg"
+          alt="Aerial view of DTCP approved plotted residential land in Thoothukudi, Tamil Nadu"
+          fill
+          priority
+          className="object-cover object-center brightness-90"
         />
-        {/* Plot subdivision lines */}
-        <line x1="660" y1="305" x2="720" y2="475" stroke="#D8FF54" strokeWidth="1.5" strokeOpacity="0.8" />
-        <line x1="550" y1="410" x2="860" y2="355" stroke="#D8FF54" strokeWidth="1.5" strokeOpacity="0.8" />
-      </svg>
+        {/* Editorial Emerald Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0C1E14]/95 via-[#0C1E14]/85 to-[#0C1E14]/70 lg:to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0C1E14] via-transparent to-black/40"></div>
+      </div>
 
-      {/* Content Container aligned within Max Width */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 sm:pb-20 lg:pb-24 flex flex-col justify-between flex-1">
-        {/* Top Brand Pill Strip */}
-        <div className="flex items-center justify-between">
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-semibold shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#B7E436] animate-pulse"></span>
-            <span className="tracking-widest uppercase text-[11px]">
-              THOOTHUKUDI RESIDENTIAL LAND PORTAL
-            </span>
-          </div>
-
-          <div className="hidden sm:inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-white/90 text-xs font-mono border border-white/10">
-            <span>8°45&apos;N 78°08&apos;E • TAMIL NADU</span>
-          </div>
-        </div>
-
-        {/* Central Editorial Search Box matching Reference Screenshot */}
-        <div className="max-w-3xl my-auto py-10 sm:py-14">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] drop-shadow-lg">
-            Let&apos;s find the land of <br />
-            your dreams in Thoothukudi<span className="text-[#B7E436]">.</span>
-          </h1>
-
-          {/* Filter Pills Switcher */}
-          <div className="mt-7 flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setActiveType('buy')}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer ${
-                activeType === 'buy'
-                  ? 'bg-white text-[#1C2618] shadow-md scale-105'
-                  : 'bg-black/40 hover:bg-black/60 text-white border border-white/25 backdrop-blur-sm'
-              }`}
-            >
-              {activeType === 'buy' && <Check className="w-3.5 h-3.5 text-[#668F35] stroke-[3]" />}
-              <span>Buy Residential Plot</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveType('gated')}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer ${
-                activeType === 'gated'
-                  ? 'bg-white text-[#1C2618] shadow-md scale-105'
-                  : 'bg-black/40 hover:bg-black/60 text-white border border-white/25 backdrop-blur-sm'
-              }`}
-            >
-              {activeType === 'gated' && <Check className="w-3.5 h-3.5 text-[#668F35] stroke-[3]" />}
-              <span>Gated Townships</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveType('investment')}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer ${
-                activeType === 'investment'
-                  ? 'bg-white text-[#1C2618] shadow-md scale-105'
-                  : 'bg-black/40 hover:bg-black/60 text-white border border-white/25 backdrop-blur-sm'
-              }`}
-            >
-              {activeType === 'investment' && <Check className="w-3.5 h-3.5 text-[#668F35] stroke-[3]" />}
-              <span>Commercial Frontage</span>
-            </button>
-          </div>
-
-          {/* Unified Inline Search Bar */}
-          <form
-            onSubmit={handleSearch}
-            className="mt-4 bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-full p-2 border border-white/40 shadow-2xl flex flex-col sm:flex-row items-stretch sm:items-center gap-2"
-          >
-            {/* Corridor Dropdown */}
-            <div className="flex items-center space-x-2 px-4 py-2 border-b sm:border-b-0 sm:border-r border-gray-200">
-              <MapPin className="w-4 h-4 text-[#668F35] shrink-0" />
-              <select
-                value={corridor}
-                onChange={(e) => setCorridor(e.target.value)}
-                className="bg-transparent text-xs sm:text-sm font-bold text-[#222222] focus:outline-none cursor-pointer"
-              >
-                <option value="all">Corridor: All Areas</option>
-                <option value="Korampallam">Korampallam (Collectorate)</option>
-                <option value="Harbour Bypass Road">Harbour Bypass (Harbour Enclave)</option>
-                <option value="Palayamkottai Road">Palayamkottai Road (NH 138)</option>
-                <option value="Millerpuram">Millerpuram (City Center)</option>
-                <option value="Muthiapuram">Muthiapuram &amp; Port Zone</option>
-                <option value="Ettayapuram Road">Ettayapuram Road</option>
-              </select>
+      {/* 2. Main Content Grid */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          {/* Left Column: Visual Headline & Search (7 Cols) */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Top Verified Badges */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-400/40 text-emerald-200 text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>EXCLUSIVE TO THOOTHUKUDI DISTRICT</span>
+              </span>
+              <span className="inline-flex items-center space-x-1 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-300" />
+                <span>DTCP Approved &amp; 100% Clear Patta</span>
+              </span>
             </div>
 
-            {/* Text Input */}
-            <div className="flex-1 px-4 py-2">
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Type corridor, road width, or characteristics (ex: 40ft road, sweet water)..."
-                className="w-full bg-transparent text-xs sm:text-sm text-[#222222] placeholder-gray-500 focus:outline-none font-medium"
-              />
+            {/* Main Editorial Headline (Aura Phase II inspired) */}
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-5xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
+                Land That Grows in Value<span className="text-emerald-400">.</span> <br />
+                <span className="text-emerald-200 text-2xl sm:text-4xl lg:text-4xl font-extrabold">
+                  Premium Residential Plots in Thoothukudi
+                </span>
+              </h1>
+              <p className="text-sm sm:text-base text-gray-200 leading-relaxed max-w-xl font-normal pt-1">
+                Verified residential land parcels in Tharuvaikulam, Millerpuram, Korampallam, and Harbour Expressway. Direct tar road access, sweet groundwater, and immediate registration.
+              </p>
             </div>
 
-            {/* Vibrant Lime Action Button */}
-            <button
-              type="submit"
-              className="px-8 py-3 rounded-xl sm:rounded-full bg-[#B7E436] hover:bg-[#A3CE2A] text-[#1C2618] text-xs sm:text-sm font-bold transition-all shadow-md flex items-center justify-center space-x-2 shrink-0 cursor-pointer hover:shadow-lg"
-            >
-              <Search className="w-4 h-4 stroke-[2.5]" />
-              <span>Search Plots</span>
-            </button>
-          </form>
+            {/* Quick Metrics Bar (Aura style highlights) */}
+            <div className="grid grid-cols-3 gap-3 pt-2 max-w-lg">
+              <div className="bg-black/40 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                <div className="text-lg sm:text-xl font-black text-emerald-300">₹4.10 L</div>
+                <div className="text-[11px] text-gray-300">Starting Plot Price</div>
+              </div>
+              <div className="bg-black/40 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                <div className="text-lg sm:text-xl font-black text-white">36 &amp; 40 Ft</div>
+                <div className="text-[11px] text-gray-300">Tar Layout Roads</div>
+              </div>
+              <div className="bg-black/40 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                <div className="text-lg sm:text-xl font-black text-emerald-300">100%</div>
+                <div className="text-[11px] text-gray-300">Patta Guaranteed</div>
+              </div>
+            </div>
 
-          {/* Quick Tags Row */}
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-white/90">
-            <span className="text-[11px] text-gray-300 font-medium">Most searched:</span>
-            <button
-              type="button"
-              onClick={() => handleQuickTag('Korampallam')}
-              className="px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-[11px] text-white transition-colors cursor-pointer"
+            {/* Search Filter Strip */}
+            <form
+              onSubmit={handleSearchSubmit}
+              className="bg-white/95 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-white/30 max-w-xl"
             >
-              Korampallam Collectorate
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickTag('Harbour Bypass Road')}
-              className="px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-[11px] text-white transition-colors cursor-pointer"
-            >
-              Harbour Enclave Phase 1
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickTag('Palayamkottai Road')}
-              className="px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-[11px] text-white transition-colors cursor-pointer"
-            >
-              Palayamkottai Road (NH 138)
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickTag('Millerpuram')}
-              className="px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-[11px] text-white transition-colors cursor-pointer"
-            >
-              Millerpuram Central
-            </button>
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 items-center">
+                <div className="sm:col-span-5 relative">
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-700" />
+                  <select
+                    value={locality}
+                    onChange={(e) => setLocality(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2.5 text-xs font-semibold text-gray-900 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                  >
+                    <option value="all">All Thoothukudi Corridors</option>
+                    <option value="Tharuvaikulam">Tharuvaikulam (ECR)</option>
+                    <option value="Millerpuram">Millerpuram</option>
+                    <option value="Korampallam">Korampallam (Collectorate)</option>
+                    <option value="Harbour">Harbour Express Highway</option>
+                    <option value="Palayamkottai">Palayamkottai Road</option>
+                  </select>
+                </div>
+
+                <div className="sm:col-span-4">
+                  <select
+                    value={budget}
+                    onChange={(e) => setBudget(e.target.value)}
+                    className="w-full px-3 py-2.5 text-xs font-semibold text-gray-900 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                  >
+                    <option value="all">Any Budget Range</option>
+                    <option value="under-10">Under ₹10 Lakhs</option>
+                    <option value="10-20">₹10 L – ₹20 Lakhs</option>
+                    <option value="20-35">₹20 L – ₹35 Lakhs</option>
+                    <option value="above-35">Above ₹35 Lakhs</option>
+                  </select>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <button
+                    type="submit"
+                    className="w-full py-2.5 px-4 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center space-x-1"
+                  >
+                    <Search className="w-3.5 h-3.5" />
+                    <span>Search</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          {/* Right Column: Aura Phase II Style Lead Capture Card (5 Cols) */}
+          <div className="lg:col-span-5">
+            <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-7 border border-emerald-100 relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-emerald-600 to-teal-600"></div>
+
+              <div className="text-center mb-5">
+                <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 mb-1.5">
+                  Direct Promoter Enquiry
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black text-gray-900">
+                  Check Plot Pricing &amp; Avail Best Offer
+                </h3>
+                <p className="text-xs text-gray-600 mt-1">
+                  Get official DTCP masterplan, price breakdown, and site visit booking.
+                </p>
+              </div>
+
+              {leadSuccess ? (
+                <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-center space-y-3">
+                  <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
+                  <h4 className="text-base font-bold text-emerald-900">
+                    Enquiry Submitted Successfully!
+                  </h4>
+                  <p className="text-xs text-emerald-700 leading-relaxed">
+                    Our verified Thoothukudi land coordinator is contacting you right away. A detailed brochure and price list have been prepared.
+                  </p>
+                  <button
+                    onClick={() => setLeadSuccess(false)}
+                    className="text-xs text-emerald-800 font-semibold underline hover:text-emerald-900"
+                  >
+                    Submit another enquiry
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleLeadSubmit} className="space-y-3.5">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
+                      Your Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. S. Ganesan"
+                      value={leadForm.name}
+                      onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                      className="w-full px-3.5 py-2.5 text-xs text-gray-900 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white focus:outline-none transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
+                      Mobile Number (WhatsApp Preferred) *
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-500">
+                        +91
+                      </span>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="98421 55678"
+                        value={leadForm.phone}
+                        onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
+                        className="w-full pl-11 pr-3.5 py-2.5 text-xs text-gray-900 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:bg-white focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2.5">
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
+                        Preferred Area
+                      </label>
+                      <select
+                        value={leadForm.locality}
+                        onChange={(e) => setLeadForm({ ...leadForm, locality: e.target.value })}
+                        className="w-full px-2.5 py-2.5 text-xs text-gray-900 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                      >
+                        <option value="Tharuvaikulam">Tharuvaikulam</option>
+                        <option value="Millerpuram">Millerpuram</option>
+                        <option value="Korampallam">Korampallam</option>
+                        <option value="Harbour Highway">Harbour Highway</option>
+                        <option value="Palayamkottai Road">Palayamkottai Rd</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold text-gray-700 uppercase mb-1">
+                        Budget Range
+                      </label>
+                      <select
+                        value={leadForm.budget}
+                        onChange={(e) => setLeadForm({ ...leadForm, budget: e.target.value })}
+                        className="w-full px-2.5 py-2.5 text-xs text-gray-900 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-600 focus:outline-none"
+                      >
+                        <option value="under-10">Under ₹10 Lakhs</option>
+                        <option value="10-20">₹10 L – ₹20 Lakhs</option>
+                        <option value="20-35">₹20 L – ₹35 Lakhs</option>
+                        <option value="above-35">Above ₹35 Lakhs</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={submittingLead}
+                    className="w-full py-3.5 px-4 bg-emerald-700 hover:bg-emerald-800 disabled:opacity-50 text-white rounded-xl text-xs sm:text-sm font-bold tracking-wide uppercase shadow-lg shadow-emerald-700/30 transition-all flex items-center justify-center space-x-2"
+                  >
+                    <span>{submittingLead ? 'Checking Offers...' : 'Check Plot Pricing &amp; Get Blueprint'}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <p className="text-[10px] text-gray-500 text-center flex items-center justify-center space-x-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Instant callback • No spam • Direct seller connection</span>
+                  </p>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>
